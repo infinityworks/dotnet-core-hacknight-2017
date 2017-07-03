@@ -83,3 +83,13 @@ dotnet restore
 dotnet run
 ```
 
+# View random cats
+
+Add logging to the API client to help with debugging.
+
+```
+dotnet add package Microsoft.Extensions.Logging
+```
+
+Add a ViewModel, call the API etc., add a View to display everything.
+

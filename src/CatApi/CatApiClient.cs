@@ -3,19 +3,23 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Microsoft.Extensions.Logging;
 
 namespace CatApi
 {
     public class CatApiClient : ICatApiClient
     {
         private HttpClient _client;
+        private readonly ILogger<CatApiClient> _logger;
 
-        public CatApiClient()
+        public CatApiClient(ILogger<CatApiClient> logger)
         {
             _client = new HttpClient();
             _client.BaseAddress = new Uri("http://thecatapi.com/api/");
+            _logger = logger;
         }
 
         public async Task<CatApiResponse> List(int max)
@@ -25,18 +29,22 @@ namespace CatApi
             var httpResponse = await _client.GetAsync($"images/get?format=xml&results_per_page={WebUtility.UrlEncode(max.ToString())}");
             sw.Stop();
 
+            var responseString = await httpResponse.Content.ReadAsStringAsync();
+            
+            _logger.LogDebug("{xml}", responseString);
+
             return new CatApiResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 TimeTaken = sw.Elapsed,
-                Response = Deserialize<Response>(await httpResponse.Content.ReadAsStreamAsync()),
+                Response = Deserialize<Response>(responseString),
             };
         }
 
-        private T Deserialize<T>(Stream stream) where T : class
+        private T Deserialize<T>(string s) where T : class
         {
             var deserializer = new XmlSerializer(typeof(T));
-            return deserializer.Deserialize(stream) as T;
+            return deserializer.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(s))) as T;
         }
     }
 

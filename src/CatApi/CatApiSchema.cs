@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace CatApi
 {
+    [XmlRoot("response")]
     public class Response
     {
         [XmlElement("data")]
@@ -12,11 +13,11 @@ namespace CatApi
 
     public class Data
     {
-        [XmlElement("images")]
-        [XmlArray("image")]
+        [XmlArray("images")]
         public List<Image> Images { get; set; } = new List<Image>();
     }
 
+    [XmlType("image")]
     public class Image
     {
         [XmlElement("id")]

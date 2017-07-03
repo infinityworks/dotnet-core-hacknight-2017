@@ -1,4 +1,17 @@
+@model Web.Models.CatListModel
+
 <!DOCTYPE html>
-<title>Hello World</title>
-<p>Hello World
+<title>Beautiful cats</title>
+
+<h1>Cats, cats, cats</h1>
+
+<div style="overflow:auto">
+    @foreach(var img in Model.Images) 
+    {
+        <div style="float:left">
+            <img src="@img.Url" width="150px" />
+        </div>
+    }
+</div>
+
 </html>
