@@ -49,3 +49,23 @@ Use HTML 5 for fun. ;)
 <p>Hello World
 </html>
 ```
+
+# Create a CatApi project
+
+```
+dotnet new library
+dotnet add package System.Xml.XmlSerializer
+dotnet restore
+```
+
+# Setup a solution to link everything together
+
+```
+dotnet new sln
+dotnet sln add ./src/Web/Web.csproj
+dotnet sln add ./src/CatApi/CatApi.csproj
+```
+
+# Create the API library code
+
+See commit.
