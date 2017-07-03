@@ -93,3 +93,16 @@ dotnet add package Microsoft.Extensions.Logging
 
 Add a ViewModel, call the API etc., add a View to display everything.
 
+# Add tests
+
+```
+dotnet new xunit
+dotnet add reference ../../src/CatApi/CatApi.csproj
+dotnet restore
+```
+
+Don't forget to add it to the solution.
+
+```
+dotnet test ./tests/CatApiTests/CatApiTests.csproj
+```

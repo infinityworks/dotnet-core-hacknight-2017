@@ -41,7 +41,7 @@ namespace CatApi
             };
         }
 
-        private T Deserialize<T>(string s) where T : class
+        public static T Deserialize<T>(string s) where T : class
         {
             var deserializer = new XmlSerializer(typeof(T));
             return deserializer.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(s))) as T;
