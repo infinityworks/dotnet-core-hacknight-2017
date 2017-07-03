@@ -1,17 +1,14 @@
 # dotnet-core-hacknight-2017
 
-# Run the Web template
+# Run the Web template and run the output
 
 ```
 dotnet new web
-```
-
-# Run it
-
-```
 dotnet restore
 dotnet run
 ```
+
+[View Changes]([https://github.com/infinityworksltd/dotnet-core-hacknight-2017/commit/15597acf351f6324a8b8571b8eedfbbad0c269ef)
 
 # Add MVC
 
@@ -25,50 +22,26 @@ dotnet restore
 
 * Create a `Home` controller and `Index` action.
 
-### ./Controllers/HomeController.cs
+[View Changes](https://github.com/infinityworksltd/dotnet-core-hacknight-2017/commit/6d54f19d869e01b959030caf6d50c12b61fd768d)
 
-```C#
-using Microsoft.AspNetCore.Mvc;
-
-public class HomeController : Controller 
-{
-    public ActionResult Index()
-    {
-        return View();
-    }
-}
-```
-
-### ./Views/Home/Index.cshtml
-
-Use HTML 5 for fun. ;)
-
-```HTML
-<!DOCTYPE html>
-<title>Hello World</title>
-<p>Hello World
-</html>
-```
-
-# Create a CatApi project
+# Create a CatApi project & setup a solution to link everything together
 
 ```
 dotnet new library
 dotnet add package System.Xml.XmlSerializer
 dotnet restore
 ```
-
-# Setup a solution to link everything together
-
 ```
 dotnet new sln
 dotnet sln add ./src/Web/Web.csproj
 dotnet sln add ./src/CatApi/CatApi.csproj
 ```
 
+[View Changes](https://github.com/infinityworksltd/dotnet-core-hacknight-2017/commit/a0ed7f07e2b57f17a681900fee30cad5de97a488)
+
 # Create the API library code
 
-See commit.
+[View Changes](https://github.com/infinityworksltd/dotnet-core-hacknight-2017/commit/a0ed7f07e2b57f17a681900fee30cad5de97a488)
 
 # Add a reference to the API library from the MVC project
 
@@ -76,12 +49,16 @@ See commit.
 dotnet add reference ../CatApi/CatApi.csproj
 ```
 
+[View Changes](https://github.com/infinityworksltd/dotnet-core-hacknight-2017/commit/6af7c482cb01cd94e442ffe16be88bf637e13c84)
+
 # Configure MVC to automatically inject the new service into a controller
 
 ```
 dotnet restore
 dotnet run
 ```
+
+[View Changes](https://github.com/infinityworksltd/dotnet-core-hacknight-2017/commit/76655424731fffac5dca31bc9d998ce62c91a765)
 
 # View random cats
 
@@ -92,6 +69,8 @@ dotnet add package Microsoft.Extensions.Logging
 ```
 
 Add a ViewModel, call the API etc., add a View to display everything.
+
+[View Changes](https://github.com/infinityworksltd/dotnet-core-hacknight-2017/commit/a35b8fddab5499c0918189b009b1f2b3b00e5cbc)
 
 # Add tests
 
@@ -106,3 +85,5 @@ Don't forget to add it to the solution.
 ```
 dotnet test ./tests/CatApiTests/CatApiTests.csproj
 ```
+
+[View Changes](https://github.com/infinityworksltd/dotnet-core-hacknight-2017/commit/253737f9dfd3e05ba22d8e98f1f19bbbedc6d40a)
