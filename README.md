@@ -5,3 +5,10 @@
 ```
 dotnet new web
 ```
+
+# Run it
+
+```
+dotnet restore
+dotnet run
+```
