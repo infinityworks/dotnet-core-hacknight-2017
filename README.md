@@ -70,8 +70,16 @@ dotnet sln add ./src/CatApi/CatApi.csproj
 
 See commit.
 
-# Add a reference to the API library from the MVC project.
+# Add a reference to the API library from the MVC project
 
 ```
 dotnet add reference ../CatApi/CatApi.csproj
 ```
+
+# Configure MVC to automatically inject the new service into a controller
+
+```
+dotnet restore
+dotnet run
+```
+

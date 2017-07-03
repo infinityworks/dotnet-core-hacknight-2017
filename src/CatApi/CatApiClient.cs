@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace CatApi
 {
-    public class CatApiClient
+    public class CatApiClient : ICatApiClient
     {
         private HttpClient _client;
 
