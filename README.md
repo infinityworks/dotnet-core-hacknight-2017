@@ -69,3 +69,9 @@ dotnet sln add ./src/CatApi/CatApi.csproj
 # Create the API library code
 
 See commit.
+
+# Add a reference to the API library from the MVC project.
+
+```
+dotnet add reference ../CatApi/CatApi.csproj
+```
