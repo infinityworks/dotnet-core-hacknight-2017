@@ -13,7 +13,7 @@ dotnet run
 # Add MVC
 
 ```
-dotnet package add Microsoft.AspNetCore.Mvc
+dotnet add package Microsoft.AspNetCore.Mvc
 dotnet restore
 ```
 
